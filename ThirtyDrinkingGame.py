@@ -8,6 +8,8 @@ def onClientChoice():
     IPaddr = input("IP-address of server: ")
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect((IPaddr,port))
+    json = createJson('ROLL')
+    sock.send(json)
 
 '''
 Messages to transmit:
@@ -27,7 +29,11 @@ d) [TotalScore]
  
 '''
 
-
+def createJson(state, dicesRolled = [], dicesPicked = [], total = 0):
+    data = {}
+    data['state'] = state
+    json_data = json.dumps(data)
+    return json_data.encode()
 
 def getRandomDices(no_dices):
     result = []
@@ -56,9 +62,8 @@ def handleTotal():
     print("Total")
         
 
-    
 def onNewEvent(json_input):
-    fuck_input = json_input.loads(json_input)
+    fuck_input = json.loads(json_input.decode())
     state = fuck_input["state"]
 
     if(state == "TURN"):
@@ -89,9 +94,11 @@ def onServerChoice():
                 if not data:
                     break
                 conn.sendall(data)
+                onNewEvent(data)
 
 
-
-
-    
-handleTurn(6)
+serverOrClient = input("server or client?: ")
+if serverOrClient == 'server':
+    onServerChoice()
+else:
+    onClientChoice()

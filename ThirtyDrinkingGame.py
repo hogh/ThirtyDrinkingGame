@@ -1,12 +1,33 @@
 import socket
 
-port = 5555
+port = 55555
 
 def onClientChoice():
     IPaddr = input("IP-address of server: ")
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect((IPaddr,port))
 
+'''
+Messages to transmit:
+a) SwitchTurn
+b) [Terninger] (array of terninger) // Spiller slag
+c) [PickedTerninger][NotPieckedTerninger][Score] // S 
+d) [TotalScore]
+'''
+
+'''
+[STATE] {Turn, Roll, Result, End} // State can be one of those
+- [TURN] // Shift turn
+- [ROLL][DICES]{Dice1,Dice2,Dice3..DiceN} // Contains array of dices 
+- [PICKED]{Dice1,DiceK...DiceN} // Contains the picked Dices by the oppnent
+- [TOTAL]{Value}
+
+ 
+'''
+def transmitMessage()
+
+
+    
 def onServerChoice():
     HOST = ''
     PORT = 55555

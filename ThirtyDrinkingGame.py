@@ -3,6 +3,9 @@ import random
 import json
 
 port = 55555
+dices_left = 6
+
+
 
 def onClientChoice():
     IPaddr = input("IP-address of server: ")
@@ -39,7 +42,24 @@ def getRandomDices(no_dices):
 
 
 
+def do_turn():
+    i = "q"
+    
+    while dices_left != 0:
+        dice_arr = getRandomDices(dices_left)
+        picked_dices = []
+        i = 0
+        for dices in dice_arr:
+            print(i+1 +": " + str(dices)
 
+        i = "nope"
+        while i != "q":
+            i = input("Number (0-n) end with \"q\": ")
+            picked_dices.append(dice_arr[-1])
+
+        for values in picked_dices:
+            print values + ", "
+            
 def handleTurn(dices_left):
     print("Turn")
 
@@ -94,4 +114,4 @@ def onServerChoice():
 
 
     
-handleTurn(6)
+do_turn()

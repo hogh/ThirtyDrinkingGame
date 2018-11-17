@@ -47,13 +47,13 @@ def onNewEvent(json_input):
     state = fuck_input["state"]
 
     if(state == "TURN"):
-        handleturn()
+        handleTurn()
     elif(state == "ROLL"):
         handleRoll()
     elif(state == "PICKED"):
         handlePicked()
     elif(state == "TOTAL"):
-        handleTotal();
+        handleTotal()
 
     
             

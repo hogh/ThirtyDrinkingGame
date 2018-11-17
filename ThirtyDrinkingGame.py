@@ -1,4 +1,5 @@
 import socket
+import random
 import json
 
 port = 55555
@@ -28,8 +29,22 @@ d) [TotalScore]
 
 
 
-def handleTurn():
-    print("Received turn")
+def getRandomDices(no_dices):
+    result = []
+    for i in range(0, dices_left):
+        result.append(random.randint(1 ,6))
+
+
+    return result
+
+
+
+
+def handleTurn(dices_left):
+    print("Turn")
+
+
+
 
 def handleRoll():
     print("Roll")
@@ -41,7 +56,7 @@ def handleTotal():
     print("Total")
         
 
-
+    
 def onNewEvent(json_input):
     fuck_input = json_input.loads(json_input)
     state = fuck_input["state"]
@@ -79,3 +94,4 @@ def onServerChoice():
 
 
     
+handleTurn(6)

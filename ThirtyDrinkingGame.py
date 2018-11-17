@@ -43,7 +43,7 @@ def handleTotal():
 
 
 def onNewEvent(json_input):
-    input = json_input.loads(json_input)
+    fuck_input = json_input.loads(json_input)
     state = input["state"]
 
     if(state == "TURN"):

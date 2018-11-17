@@ -1,4 +1,5 @@
 import socket
+import json
 
 port = 55555
 
@@ -24,8 +25,38 @@ d) [TotalScore]
 
  
 '''
-def transmitMessage()
 
+
+
+def handleTurn():
+    print("Received turn")
+
+def handleRoll():
+    print("Roll")
+
+def handlePicked():
+    print("Picked")
+
+def handleTotal():
+    print("Total")
+        
+
+
+def onNewEvent(json_input):
+    input = json_input.loads()
+    state = input["state"]
+
+    if(state == "TURN"):
+        handleturn()
+    elif(state == "ROLL"):
+        handleRoll()
+    elif(state == "PICKED"):
+        handlePicked()
+    elif(state == "TOTAL"):
+        handleTotal();
+
+    
+            
 
     
 def onServerChoice():
@@ -46,5 +77,5 @@ def onServerChoice():
 
 
 
-onClientChoice()
+
     
